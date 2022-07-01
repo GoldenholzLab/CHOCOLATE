@@ -14,6 +14,9 @@ In reality it is a wrapper function for the simulate_dairy function with appropr
 For the paper about this simulator, several additional files were used. None of these are needed to simulate your own synthetic patients, but if you wish to see how the paper's figures and examples were coded, see these.
 
 prove_realsim.py - many helpful additional functions
+
 trialSimulator.py -helpful functions specific to simulating clinical trials
+
 for_the_paper.ipynb - jupytr notebook to build figures for the paper
+
 forecastProof.ipynb - jupytr notebook to build deep learning example for the paper

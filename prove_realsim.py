@@ -23,7 +23,7 @@ import warnings
 from tempfile import TemporaryFile
     
 def draw_chocolate(Lparams):
-    fname = 'Fig2-Example.tif'
+    fname = 'Fig2-Example-v2.pdf'
     if 0:
         REPS = 100000
         msf = np.array([ get_mSF(-1) for _ in range(REPS) ])
@@ -51,7 +51,7 @@ def draw_chocolate(Lparams):
     #plt.figure()
 
     M = np.max(rate)
-    fig, ax = plt.subplots(4, 1,figsize=(18,8))
+    fig, ax = plt.subplots(4, 1,figsize=(7,5))
     ax[3].eventplot(t[seizure_diary_final>0], color='blue', linelengths = 1,alpha=.5,label='Final seizure diary')     
     ax[3].plot(t,1+t*0,'b--')
     ax[3].set_xlim([0,numbdays])
@@ -62,10 +62,10 @@ def draw_chocolate(Lparams):
     ax[3].set_xlabel('Time (days)')
     ax[3].get_yaxis().set_visible(False)
     ax[3].get_xaxis().set_visible(True)
-    ax[2].plot(t,1.5+2*(modulated_cluster_rate/M), '--',alpha=0.5,color = 'g',markersize=3, label = 'k[n] = modulated clustered rate')
+    ax[2].plot(t,1.5+2*(modulated_cluster_rate/M), '.-',alpha=0.5,color = 'g',markersize=3, label = 'k[n] = modulated clustered rate')
     ax[2].eventplot(t[seizure_diary_B>0], color='blue', linelengths = 1,alpha=.5,label='Seizure diary B')     
 
-    ax[2].set_ylim([-1,3])
+    ax[2].set_ylim([-3,2])
     
     ax[2].set_xlim([0,numbdays])
     ax[2].axis('off')
@@ -73,10 +73,10 @@ def draw_chocolate(Lparams):
     #ax[2].ylabel('seizures')
     ax[2].get_yaxis().set_visible(False)
     ax[2].get_xaxis().set_visible(False)
-    ax[1].plot(t,1.5+2*(modulated_rate/M),'-.',color='r', alpha=.5,markersize=3,label = 'm[n] = modulated risk rate, m[n]')
+    ax[1].plot(t,1.5+2*(modulated_rate/M),'.-',color='r', alpha=.5,markersize=3,label = 'm[n] = modulated risk rate, m[n]')
     ax[1].eventplot(t[seizure_diary_A>0], color='blue', linelengths = 1,alpha=.5,label='Seizure diary A')     
 
-    ax[1].set_ylim([-1,3])
+    ax[1].set_ylim([-2,2])
     ax[1].set_xlim([0,numbdays])
     ax[1].axis('off')
     ax[1].legend(loc='lower right')
@@ -96,7 +96,7 @@ def draw_chocolate(Lparams):
     ax[0].set_xticks(np.arange(min(t), max(t)+1, 10))
     ax[0].get_yaxis().set_visible(False)
     ax[0].get_xaxis().set_visible(False)
-    ax[0].set_ylim([-.1,2.1])
+    ax[0].set_ylim([-.1,1.1])
     #ax[0].xlabel('day')
     #fig.supxlabel('Time (day)')
     

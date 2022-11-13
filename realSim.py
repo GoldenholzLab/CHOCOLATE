@@ -1,10 +1,12 @@
 import numpy as np
 
+# this turns off an annoying warning produced from realsim
+np.warnings.filterwarnings('ignore', category=np.VisibleDeprecationWarning)  
 
 def simulator_base(sampRATE,number_of_days,cyclesTF=True,clustersTF=True, maxlimits=True, defaultSeizureFreq = -1,
     Lparams=[1.5475,17.645,10.617,5.9917,-0.3085,1.5371],CP=[],returnDetails=False,clusterParams=[.5, 1, 7, 1, 1],
     bestM=1.2267388224600906,bestS = 1.1457004817186776):
-    # wrapper function for simulate_dairy
+    # wrapper function for  
     # given input params, will simulate 1 diary
     # INPUTS:
     #  sampRATE = samples per 24hr day (ie 1 = 1 per day, 24 = 1 per hr, etc)
@@ -35,6 +37,11 @@ def simulator_base(sampRATE,number_of_days,cyclesTF=True,clustersTF=True, maxlim
         cluster_prob = 0
     clusterParams = [cyclesTF,cluster_prob, clusterParams[1], clusterParams[2], clusterParams[3], clusterParams[4]]
 
+    if sampRATE<1:
+        print('ERROR!!! You should never put sampRATE<1. If you want to do so, ')
+        print('first generate with sampRATE=1, then use the included downsample')
+        print('function to cut things down further.')
+        
     return simulate_diary(sampRATE=sampRATE,number_of_samples=number_of_samples,
         SFparams=SFparams,returnDetails=returnDetails,cycleParams=CP,
         maxLimits=maxlimits,Lparams=Lparams,clusterParams=clusterParams)

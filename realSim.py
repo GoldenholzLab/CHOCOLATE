@@ -1,7 +1,7 @@
 import numpy as np
 
 # this turns off an annoying warning produced from realsim
-np.warnings.filterwarnings('ignore', category=np.VisibleDeprecationWarning)  
+#np.warnings.filterwarnings('ignore', category=np.VisibleDeprecationWarning)  
 
 def simulator_base(sampRATE,number_of_days,cyclesTF=True,clustersTF=True, maxlimits=True, defaultSeizureFreq = -1,
     Lparams=[1.5475,17.645,10.617,5.9917,-0.3085,1.5371],CP=[],returnDetails=False,clusterParams=[.5, 1, 7, 1, 1],
@@ -97,7 +97,7 @@ def simulate_diary(sampRATE,number_of_samples,SFparams,returnDetails,cycleParams
     #overdispersion =  overdispersion_coef*SF**overdispersion_pow
     #0.82176,7.4326,3.6196,0.19086,2.7791,6.5902
     #tempdisp = Lparams[1]*np.log10(SF) + Lparams[2]*(SF**Lparams[3]) + Lparams[4]*SF + Lparams[5]
-    tempdisp = Lparams[1]*np.log10(np.max([0.001,SF + Lparams[2]])) + Lparams[3]*np.log10(np.max([0.001,SF + Lparams[4]]))  + Lparams[5]
+    tempdisp = Lparams[1]*np.log10(max([0.001,SF + Lparams[2]])) + Lparams[3]*np.log10(max([0.001,SF + Lparams[4]]))  + Lparams[5]
     
     overdispersion = np.maximum(Lparams[0],tempdisp)
     # using a a gamma function, get that rate

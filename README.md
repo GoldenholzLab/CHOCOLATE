@@ -1,4 +1,4 @@
-# CHOCOLATE
+# CHOCOLATES
 CHOCOLATE seizure diary simulator
 
 Epilepsy Plus Data Science Lab
